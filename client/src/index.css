@@ -1,0 +1,9 @@
+/* Tailwind CSS base styles */
+@import "tailwindcss";
+
+/* Custom global styles */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
