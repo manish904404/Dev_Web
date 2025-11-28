@@ -154,6 +154,19 @@ const updateUser = (req, res) => {
     });
   }
 
+  // Check if email is being updated and if it already exists for another user
+  if (email && email !== users[userIndex].email) {
+    const emailExists = users.some((u) => u.email === email && u.id !== id);
+    if (emailExists) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          message: "A user with this email already exists",
+        },
+      });
+    }
+  }
+
   // Update user with new data (only update fields that are provided)
   users[userIndex] = {
     ...users[userIndex],
